@@ -1,0 +1,13 @@
+{
+  "name": "desktop",
+  "dockerComposeFile": ["../docker-compose.dev.yml", "docker-compose.yml"],
+  "service": "desktop",
+  "workspaceFolder": "/usr/src/app/2/desktop",
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#aa0000"
+    }
+  },
+  "extensions": [],
+  "postCreateCommand": "yarn"
+}
