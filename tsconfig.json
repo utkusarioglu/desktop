@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es2020",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "rootDir": "..",
+    "baseUrl": "./",
+    "paths": {
+      "_views/*": ["../web/src/components/views/*"],
+      "_layouts/*": ["../web/src/components/layouts/*"],
+      "_routes/*": ["../web/src/components/routes/*"],
+      "_routers/*": ["../web/src/components/routers/*"],
+      "_services/*": ["../web/src/services/*"],
+      "_slices/*": ["../web/src/slices/*"],
+      "_types/*": ["../web/src/types/*"],
+      "_utils/*": ["../web/src/utils/*"],
+
+      "hooks": ["../hooks/src/"],
+      "web/*": ["../web/src/*"]
+    },
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", "__mocks__", "__test-data__"],
+  "references": [
+    {
+      "path": "../hooks"
+    },
+    {
+      "path": "../web"
+    }
+  ]
+}

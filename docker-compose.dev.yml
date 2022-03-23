@@ -6,3 +6,5 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - .:/usr/src/app/2/desktop
+      - ../hooks:/usr/src/app/2/hooks
+      - ../web:/usr/src/app/2/web
