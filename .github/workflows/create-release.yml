@@ -47,7 +47,7 @@ jobs:
         run: yarn && yarn ci
       - name: Build Tauri
         working-directory: desktop
-        run: yarn && yarn build
+        run: yarn && yarn ci
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

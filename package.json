@@ -1,7 +1,7 @@
 {
   "name": "janavar",
   "scripts": {
-    "build": "tauri build",
+    "ci": "tauri build",
     "dev-web": "NODE_ENV=development webpack serve --config webpack.dev.js"
   },
   "devDependencies": {
