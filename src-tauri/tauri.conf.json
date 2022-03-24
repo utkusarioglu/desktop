@@ -7,7 +7,7 @@
     "distDir": "../../web/build",
     "devPath": "../dist",
     "beforeDevCommand": "",
-    "beforeBuildCommand": "scripts\\build.ps1"
+    "beforeBuildCommand": ""
   },
   "tauri": {
     "bundle": {
