@@ -28,7 +28,6 @@ jobs:
         with:
           repository: utkusarioglu/web
           path: web
-
       - name: setup node
         uses: actions/setup-node@v1
         with:
