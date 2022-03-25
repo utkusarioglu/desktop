@@ -11,7 +11,7 @@ jobs:
     env:
       NODE_ENV: production
     container: 
-      image: node:17
+      image: node:17-slim
     steps:
       - name: Checkout Hooks
         uses: actions/checkout@v2 
@@ -25,11 +25,13 @@ jobs:
           path: web
       - name: Install hooks dependencies
         working-directory: hooks
-        run: yarn install --network-timeout 1000000 --frozen-lockfile
+        run: yarn install --frozen-lockfile --production false
       - name: Build web
         working-directory: web
         run: |
-          yarn install --network-timeout 1000000 --frozen-lockfile
+          apt-get update
+          apt-get install git -y
+          yarn install --frozen-lockfile --production false
           yarn ci
       - name: Cache Web build
         uses: actions/cache@v2
@@ -84,7 +86,7 @@ jobs:
       - name: Build Tauri
         working-directory: desktop
         run: |
-          yarn install --network-timeout 1000000 --frozen-lockfile
+          yarn install --network-timeout 1000000 --frozen-lockfile --production false
           yarn ci
       - uses: tauri-apps/tauri-action@v0
         env:
