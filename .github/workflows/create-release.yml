@@ -104,7 +104,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: builds
-          path: D:\a\desktop\desktop\desktop\src-tauri\target\release
+          path: desktop/src-tauri/target/release
 
   # create-release:
   #   runs-on: ubuntu-latest
