@@ -14,7 +14,7 @@ jobs:
       image: node:17-slim
     steps:
       - name: build web
-        uses: utkusarioglu/web/.github/workflows/build-web.yml
+        uses: utkusarioglu/web/.github/workflows/build-web.yml@main
   #     - name: Checkout Hooks
   #       uses: actions/checkout@v2 
   #       with:
