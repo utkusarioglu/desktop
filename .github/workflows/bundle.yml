@@ -13,7 +13,6 @@ jobs:
     #   NODE_ENV: production
     # container: 
     #   image: node:17-slim
-    steps:
     #   - name: build web
   #     - name: Checkout Hooks
   #       uses: actions/checkout@v2 
@@ -35,14 +34,15 @@ jobs:
   #         apt-get install git -y
   #         yarn install --frozen-lockfile --production false
   #         yarn ci
-      - name: Cache Web build
-        uses: actions/cache@v2
-        env:
-          cache-name: utkusarioglu-web-build-cache
-        with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: web/build
-          key: utkusarioglu-web-build-cache
+    # steps:
+    #   - name: Cache Web build
+    #     uses: actions/cache@v2
+    #     env:
+    #       cache-name: utkusarioglu-web-build-cache
+    #     with:
+    #       # npm cache files are stored in `~/.npm` on Linux/macOS
+    #       path: web/build
+    #       key: utkusarioglu-web-build-cache
   #         # key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
   #         # restore-keys: |
   #         #   ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -64,11 +64,16 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: desktop
-      - name: Pull Web build
-        uses: actions/cache@v2
-        with: 
+      # - name: Pull Web build
+      #   uses: actions/cache@v2
+      #   with: 
+      #     path: web/build
+      #     key: utkusarioglu-web-build-cache
+      - name: Download web build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: utkusarioglu-web-build
           path: web/build
-          key: utkusarioglu-web-build-cache
 
       - name: setup node
         uses: actions/setup-node@v1
