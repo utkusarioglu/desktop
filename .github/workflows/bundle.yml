@@ -1,8 +1,8 @@
-name: "create-release"
+name: "Bundle app"
 on:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -13,26 +13,28 @@ jobs:
     container: 
       image: node:17-slim
     steps:
-      - name: Checkout Hooks
-        uses: actions/checkout@v2 
-        with:
-          repository: utkusarioglu/hooks
-          path: hooks
-      - name: Checkout Web
-        uses: actions/checkout@v2
-        with:
-          repository: utkusarioglu/web
-          path: web
-      - name: Install hooks dependencies
-        working-directory: hooks
-        run: yarn install --frozen-lockfile --production false
-      - name: Build web
-        working-directory: web
-        run: |
-          apt-get update
-          apt-get install git -y
-          yarn install --frozen-lockfile --production false
-          yarn ci
+      - name: build web
+        uses: utkusarioglu/web/.github/workflows/build-web.yml
+  #     - name: Checkout Hooks
+  #       uses: actions/checkout@v2 
+  #       with:
+  #         repository: utkusarioglu/hooks
+  #         path: hooks
+  #     - name: Checkout Web
+  #       uses: actions/checkout@v2
+  #       with:
+  #         repository: utkusarioglu/web
+  #         path: web
+  #     - name: Install hooks dependencies
+  #       working-directory: hooks
+  #       run: yarn install --frozen-lockfile --production false
+  #     - name: Build web
+  #       working-directory: web
+  #       run: |
+  #         apt-get update
+  #         apt-get install git -y
+  #         yarn install --frozen-lockfile --production false
+  #         yarn ci
       - name: Cache Web build
         uses: actions/cache@v2
         env:
@@ -41,11 +43,11 @@ jobs:
           # npm cache files are stored in `~/.npm` on Linux/macOS
           path: web/build
           key: utkusarioglu-web-build-cache
-          # key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          # restore-keys: |
-          #   ${{ runner.os }}-build-${{ env.cache-name }}-
-          #   ${{ runner.os }}-build-
-          #   ${{ runner.os }}-
+  #         # key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+  #         # restore-keys: |
+  #         #   ${{ runner.os }}-build-${{ env.cache-name }}-
+  #         #   ${{ runner.os }}-build-
+  #         #   ${{ runner.os }}-
 
   publish-tauri:
     needs: build-web
