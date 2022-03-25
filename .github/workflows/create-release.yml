@@ -30,6 +30,7 @@ jobs:
         with:
           repository: utkusarioglu/web
           path: web
+
       - name: setup node
         uses: actions/setup-node@v1
         with:
@@ -38,6 +39,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+
       # - name: install dependencies (ubuntu only)
       #   if: matrix.platform == 'ubuntu-latest'
       #   working-directory: desktop
@@ -50,11 +52,15 @@ jobs:
       - name: Build web
         working-directory: web
         run: |
+          pwd
+          ls -al
           yarn install --network-timeout 1000000 --frozen-lockfile
           yarn ci
       - name: Build Tauri
         working-directory: desktop
         run: |
+          pwd
+          ls -al
           yarn install --network-timeout 1000000 --frozen-lockfile
           yarn ci
       - uses: tauri-apps/tauri-action@v0
