@@ -7,14 +7,14 @@ on:
 
 jobs:
   build-web:
-    runs-on: ubuntu-latest
-    env:
-      NODE_ENV: production
-    container: 
-      image: node:17-slim
-    steps:
-      - name: build web
-        uses: utkusarioglu/web/.github/workflows/build-web.yml@main
+    # runs-on: ubuntu-latest
+    # env:
+    #   NODE_ENV: production
+    # container: 
+    #   image: node:17-slim
+    uses: utkusarioglu/web/.github/workflows/build-web.yml@main
+    # steps:
+    #   - name: build web
   #     - name: Checkout Hooks
   #       uses: actions/checkout@v2 
   #       with:
