@@ -16,10 +16,12 @@ jobs:
       - name: Checkout Hooks
         uses: actions/checkout@v2 
         with:
+          repository: utkusarioglu/hooks
           path: hooks
       - name: Checkout Web
         uses: actions/checkout@v2
         with:
+          repository: utkusarioglu/web
           path: web
       - name: Install hooks dependencies
         working-directory: hooks
