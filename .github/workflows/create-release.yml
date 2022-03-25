@@ -47,17 +47,17 @@ jobs:
       #     sudo apt-get update
       #     sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
       - name: Install hooks dependencies
-        working-directory: .\\hooks
+        working-directory: .\hooks
         run: yarn install --network-timeout 1000000 --frozen-lockfile
       - name: Build web
-        working-directory: ..\\web
+        working-directory: ..\web
         run: |
           pwd
           ls
           yarn install --network-timeout 1000000 --frozen-lockfile
           yarn ci
       - name: Build Tauri
-        working-directory: ..\\desktop
+        working-directory: ..\desktop
         run: |
           pwd
           ls
