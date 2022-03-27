@@ -8,46 +8,6 @@ on:
 jobs:
   build-web:
     uses: utkusarioglu/web/.github/workflows/build-web.yml@main
-    # runs-on: ubuntu-latest
-    # env:
-    #   NODE_ENV: production
-    # container: 
-    #   image: node:17-slim
-    #   - name: build web
-  #     - name: Checkout Hooks
-  #       uses: actions/checkout@v2 
-  #       with:
-  #         repository: utkusarioglu/hooks
-  #         path: hooks
-  #     - name: Checkout Web
-  #       uses: actions/checkout@v2
-  #       with:
-  #         repository: utkusarioglu/web
-  #         path: web
-  #     - name: Install hooks dependencies
-  #       working-directory: hooks
-  #       run: yarn install --frozen-lockfile --production false
-  #     - name: Build web
-  #       working-directory: web
-  #       run: |
-  #         apt-get update
-  #         apt-get install git -y
-  #         yarn install --frozen-lockfile --production false
-  #         yarn ci
-    # steps:
-    #   - name: Cache Web build
-    #     uses: actions/cache@v2
-    #     env:
-    #       cache-name: utkusarioglu-web-build-cache
-    #     with:
-    #       # npm cache files are stored in `~/.npm` on Linux/macOS
-    #       path: web/build
-    #       key: utkusarioglu-web-build-cache
-  #         # key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-  #         # restore-keys: |
-  #         #   ${{ runner.os }}-build-${{ env.cache-name }}-
-  #         #   ${{ runner.os }}-build-
-  #         #   ${{ runner.os }}-
 
   publish-tauri:
     needs: build-web
@@ -64,11 +24,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: desktop
-      # - name: Pull Web build
-      #   uses: actions/cache@v2
-      #   with: 
-      #     path: web/build
-      #     key: utkusarioglu-web-build-cache
       - name: Download web build artifact
         uses: actions/download-artifact@v2
         with:
